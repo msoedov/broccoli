@@ -4,6 +4,7 @@ Db = namedtuple('Db', '')
 Session = namedtuple('Session', '')
 Service = namedtuple('Service', '')
 Cache = namedtuple('Cache', '')
+UselessManager = namedtuple('Manger', '')
 
 
 def new_app():
@@ -18,5 +19,13 @@ def update_query(db: Db):
     return db
 
 
-def regular_function(a, b, c):
+def utility(a, b, c):
     return a, b, c
+
+
+def do_stuff(session: Session, mgr: UselessManager):
+    return session, mgr
+
+
+def validation(mgr: UselessManager, service: Service):
+    return mgr, service

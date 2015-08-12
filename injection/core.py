@@ -1,7 +1,12 @@
+import logging
 import inspect
 
 import sys
 import types
+
+
+log = logging.getLogger(__package__)
+log = logging.getLogger()
 
 
 def inject(module, *deps):
@@ -21,6 +26,9 @@ def bind(fn, *deps):
     """
     :param: fn - function or method
     """
+    if not deps:
+        log.warning('No deps')
+        return False, []
     type_to_dependency = {type(d): d for d in deps}
     detected_dependecies = {}
     signature = inspect.signature(fn)
@@ -34,6 +42,8 @@ def bind(fn, *deps):
         if param in detected_dependecies:
             defaults.append(detected_dependecies[param])
     if not defaults:
+        log.warning('%s', deps)
         return False, []
     fn.__defaults__ = tuple(defaults)
+    log.info('fn: %s, deps: %s, all: %s', fn, defaults, deps)
     return True, defaults

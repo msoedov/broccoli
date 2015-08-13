@@ -37,9 +37,14 @@ def bind(fn, *deps):
             continue
         detected_dependecies[val] = dep
     defaults = []
-    for param in signature.parameters:
+    ord_param_names = reversed([p for p in signature.parameters])
+    for param in ord_param_names:
         if param in detected_dependecies:
             defaults.append(detected_dependecies[param])
+        elif len(detected_dependecies) > len(defaults):
+            raise TypeError('{} not found value for `{}`, block to resolve: {}'.format(fn.__name__,
+                                                                                       param,
+                                                                                       detected_dependecies))
     if not defaults:
         log.warning('%s', deps)
         return False, []

@@ -6,7 +6,6 @@ import types
 
 
 log = logging.getLogger(__package__)
-log = logging.getLogger()
 
 
 def inject(module, *deps):
@@ -19,7 +18,7 @@ def inject(module, *deps):
     for fn in fn_list:
         injected, vals = bind(fn, *deps)
         if injected:
-            print("Injected {} -> {}".format(vals, fn.__name__))
+            log.debug("Injected {} -> {}".format(vals, fn.__name__))
 
 
 def bind(fn, *deps):
@@ -45,5 +44,5 @@ def bind(fn, *deps):
         log.warning('%s', deps)
         return False, []
     fn.__defaults__ = tuple(defaults)
-    log.info('fn: %s, deps: %s, all: %s', fn, defaults, deps)
+    log.debug('fn: %s, deps: %s, all: %s', fn, defaults, deps)
     return True, defaults

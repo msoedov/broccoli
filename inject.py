@@ -1,7 +1,6 @@
 from collections import namedtuple
 from injection import inject
 
-
 Db = namedtuple('Db', '')
 Session = namedtuple('Session', '')
 Service = namedtuple('Service', '')
@@ -24,7 +23,6 @@ def update_query(db: Db):
 
 
 class Foo(object):
-
     def __init__(self, db: Db):
         self.db = db
 
@@ -34,4 +32,5 @@ inject('__main__', *new_app())
 request('foo')
 update_query()
 update_query('MockDb')
-Foo()
+f = Foo()
+print(f.db)

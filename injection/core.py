@@ -4,12 +4,12 @@ import inspect
 import sys
 import types
 
-
 log = logging.getLogger(__package__)
 
 
 def annotated_class(val):
-    return isinstance(val, type) and hasattr(val, '__init__') and hasattr(val.__init__, '__annotations__') and val.__init__.__annotations__
+    return isinstance(val, type) and hasattr(val, '__init__') and hasattr(
+        val.__init__, '__annotations__') and val.__init__.__annotations__
 
 
 def inject(module, *deps):
@@ -52,10 +52,9 @@ def bind(fn, *deps):
             defaults.append(detected_dependecies[param])
         elif len(detected_dependecies) > len(defaults):
             raise TypeError('Not found mandatory value for `{}`'
-                            'in annotaion: {}{}, resolved: {}'.format(param,
-                                                                      fn.__name__,
-                                                                      annotaions,
-                                                                      detected_dependecies))
+                            'in annotaion: {}{}, resolved: {}'.format(
+                                param, fn.__name__, annotaions,
+                                detected_dependecies))
     if not defaults:
         log.warning('%s', deps)
         return False, []

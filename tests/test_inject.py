@@ -1,4 +1,3 @@
-
 import sample_module
 
 from unittest import TestCase
@@ -7,7 +6,6 @@ from sample_module import *
 
 
 class TestSample(TestCase):
-
     def setUp(self):
         self.to_inject = new_app()
 
@@ -17,9 +15,9 @@ class TestSample(TestCase):
         self.assertEqual(deps, [])
 
     def test_bind_should_return_false(self):
-
         def false_bind(x: type):
             pass
+
         ok, deps = bind(false_bind, *self.to_inject)
         self.assertFalse(ok)
         self.assertEqual(deps, [])

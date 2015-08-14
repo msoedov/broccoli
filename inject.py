@@ -23,8 +23,15 @@ def update_query(db: Db):
     print(db)
 
 
+class Foo(object):
+
+    def __init__(self, db: Db):
+        self.db = db
+
+
 inject('__main__', *new_app())
 
 request('foo')
 update_query()
 update_query('MockDb')
+Foo()

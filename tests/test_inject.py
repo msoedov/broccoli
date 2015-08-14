@@ -43,8 +43,15 @@ class TestSample(TestCase):
         self.assertTrue(ok, deps)
         self.assertEqual(deps, expected)
 
-        try:
-            vals = do_stuff('do stuff')
-        except Exception as e:
-            self.fail(e)
-        self.assertEqual(vals, expected + ['do stuff'])
+        with self.assertRaises(TypeError):
+            do_stuff('do stuff')
+
+    def test_validation(self):
+        expected = [Session()]
+        ok, deps = bind(validation, *self.to_inject)
+        self.assertTrue(ok, deps)
+        self.assertEqual(deps, expected)
+
+        vals = validation('bar')
+
+        self.assertEqual(vals, ['bar'] + expected)

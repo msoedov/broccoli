@@ -26,11 +26,10 @@ class Foo(object):
     def __init__(self, db: Db):
         self.db = db
 
+# inject('__main__', *new_app())
 
-inject('__main__', *new_app())
-
-request('foo')
-update_query()
-update_query('MockDb')
-f = Foo()
-print(f.db)
+# request('foo')
+# update_query()
+# update_query('MockDb')
+# f = Foo()
+# print(f.db)

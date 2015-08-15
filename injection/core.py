@@ -56,8 +56,8 @@ def bind(fn, *deps):
                                 param, fn.__name__, annotaions,
                                 detected_dependecies))
     if not defaults:
-        log.warning('%s', deps)
+        log.warning('%s%s in %s', fn.__name__, fn.__annotations__, deps)
         return False, []
     fn.__defaults__ = tuple(defaults)
-    log.debug('fn: <%s>, deps: %s, all: %s', fn.__name__, defaults, deps)
+    log.warning("Injected %s to %s%s", defaults, fn.__name__, annotaions)
     return True, defaults

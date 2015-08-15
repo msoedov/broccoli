@@ -1,5 +1,5 @@
 from flask import Flask
-from injection import BrocolliPlugin
+from injection import BroccoliPlugin
 
 from inject import *
 
@@ -13,5 +13,5 @@ def hello_world(s: Service):
 
 
 if __name__ == '__main__':
-    BrocolliPlugin(app, *new_app())
+    BroccoliPlugin(app, *new_app())
     app.run()

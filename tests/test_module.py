@@ -29,3 +29,8 @@ def do_stuff(session: Session, mgr: UselessManager):
 
 def validation(mgr: UselessManager, service: Service):
     return mgr, service
+
+
+class Foo(object):
+    def __init__(self, db: Db):
+        self.db = db

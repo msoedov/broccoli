@@ -1,16 +1,14 @@
-import sample_module
-
 from unittest import TestCase
 from injection import bind
-from sample_module import *
+from test_module import *
 
 
-class TestSample(TestCase):
+class TestBind(TestCase):
     def setUp(self):
         self.to_inject = new_app()
 
     def test_bind_no_dependenices(self):
-        ok, deps = bind(sample_module.request)
+        ok, deps = bind(request)
         self.assertFalse(ok)
         self.assertEqual(deps, [])
 
@@ -49,3 +47,20 @@ class TestSample(TestCase):
         vals = validation('bar')
 
         self.assertSequenceEqual(vals, ['bar'] + expected)
+
+    def test_class(self):
+        ok, deps = bind(Foo.__init__, *self.to_inject)
+        self.assertTrue(ok)
+        self.assertIn(Foo().db, self.to_inject)
+
+    def test_single_argument(self):
+        expected = Db()
+        ok, deps = bind(update_query, *self.to_inject)
+        self.assertTrue(ok, deps)
+        self.assertEqual(deps, [expected])
+
+        try:
+            vals = update_query()
+        except Exception as e:
+            self.fail(e)
+        self.assertEqual(vals, expected)

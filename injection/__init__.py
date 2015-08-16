@@ -5,6 +5,7 @@ from .flask import *
 # - make file
 # - unitests
 # - docstrings
+# - decorators?
 # - rename
 # - samples
 # - setup.py package

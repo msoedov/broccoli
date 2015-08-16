@@ -33,16 +33,12 @@ class TestSample(TestCase):
             vals = request('foo')
         except Exception as e:
             self.fail(e)
-        self.assertEqual(vals, ['foo'] + expected)
+        self.assertSequenceEqual(vals, ['foo'] + expected)
 
     def test_do_stuff(self):
-        expected = [Session()]
-        ok, deps = bind(do_stuff, *self.to_inject)
-        self.assertTrue(ok, deps)
-        self.assertEqual(deps, expected)
 
         with self.assertRaises(TypeError):
-            do_stuff('do stuff')
+            bind(do_stuff, *self.to_inject)
 
     def test_validation(self):
         expected = [Session()]
@@ -52,4 +48,4 @@ class TestSample(TestCase):
 
         vals = validation('bar')
 
-        self.assertEqual(vals, ['bar'] + expected)
+        self.assertSequenceEqual(vals, ['bar'] + expected)

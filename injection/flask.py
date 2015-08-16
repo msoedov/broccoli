@@ -8,4 +8,5 @@ def BroccoliPlugin(app, *dependencies):
         ok, deps = bind(view, *dependencies)
     return errors
 
+
 BroccoliFlask = BroccoliPlugin

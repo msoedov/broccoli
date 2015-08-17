@@ -1,5 +1,5 @@
 from flask import Flask
-from injection import BroccoliPlugin
+from broccoli import BroccoliPlugin
 
 from inject import *
 

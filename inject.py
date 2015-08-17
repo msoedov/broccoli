@@ -1,5 +1,4 @@
 from collections import namedtuple
-from injection import inject
 
 Db = namedtuple('Db', '')
 Session = namedtuple('Session', '')
@@ -23,6 +22,7 @@ def update_query(db: Db):
 
 
 class Foo(object):
+
     def __init__(self, db: Db):
         self.db = db
 
@@ -32,4 +32,3 @@ class Foo(object):
 # update_query()
 # update_query('MockDb')
 # f = Foo()
-# print(f.db)

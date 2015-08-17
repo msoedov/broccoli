@@ -13,6 +13,11 @@ def annotated_class(val):
 
 
 def inject(module, *deps):
+    """
+    :param module:
+    :param deps:
+    :return:
+    """
     if isinstance(module, str):
         module = sys.modules[module]
     fn_list = []
@@ -31,7 +36,8 @@ def inject(module, *deps):
 
 def bind(fn, *deps):
     """
-    :param: fn - function or method
+    :param fn: annotated function
+    :param deps: dependencies
     """
     if not deps:
         log.warning('No deps')

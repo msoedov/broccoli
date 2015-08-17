@@ -1,6 +1,6 @@
 from unittest import TestCase
-from injection import bind
-from test_module import *
+from broccoli import bind
+from .test_module import *
 
 
 class TestBind(TestCase):

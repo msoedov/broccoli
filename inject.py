@@ -22,7 +22,6 @@ def update_query(db: Db):
 
 
 class Foo(object):
-
     def __init__(self, db: Db):
         self.db = db
 

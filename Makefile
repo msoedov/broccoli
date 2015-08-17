@@ -1,7 +1,7 @@
 default: format test
 
 test:
-	@nosetests --with-coverage
+	@nosetests --with-coverage --cover-package broccoli
 
 clean:
 	@find . -name '*.pyc' -delete

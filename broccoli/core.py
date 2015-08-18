@@ -27,7 +27,10 @@ def inject(module, *deps):
         elif annotated_class(attr):
             # todo: handle method annotations
             fn_list.append(attr.__init__)
+    return bind_batch(fn_list, *deps)
 
+
+def bind_batch(fn_list, *deps):
     for fn in fn_list:
         injected, vals = bind(fn, *deps)
         if injected:
@@ -67,3 +70,34 @@ def bind(fn, *deps):
     fn.__defaults__ = tuple(defaults)
     log.warning("Injected %s to %s%s", defaults, fn.__name__, annotaions)
     return True, defaults
+
+
+class Dependency(object):
+    """docstring for Dependency"""
+    resolved = None
+    injected = False
+
+    def __init__(self, on_start=None):
+        super(Dependency, self).__init__()
+        self.resolved = ()
+        self.on_start = on_start
+
+    def __call__(self, fn):
+        def wrapper(*a, **kw):
+            if not self.injected:
+                self.resolved = self.start()
+                self.injected = True
+                bind(fn, *self.resolved)
+            return fn(*a, **kw)
+
+        return wrapper
+
+    def start(self):
+        if callable(self.on_start):
+            return self.on_start()
+        return self.resolved
+
+    def __lshift__(self, on_start):
+        assert callable(on_start)
+        self.on_start = on_start
+        return self

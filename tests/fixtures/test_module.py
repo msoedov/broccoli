@@ -1,4 +1,4 @@
-from .fixtures.types import *
+from .types import *
 
 
 def new_app():
@@ -18,6 +18,7 @@ def utility(a, b, c):
 
 
 def do_stuff(session: Session, mgr: UselessManager):
+    # Should raise TypeError
     return session, mgr
 
 
@@ -26,5 +27,6 @@ def validation(mgr: UselessManager, service: Service):
 
 
 class Foo(object):
+
     def __init__(self, db: Db):
         self.db = db

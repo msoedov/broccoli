@@ -15,6 +15,7 @@ class CustomDeps(Dependency):
 dependency = Dependency(dependecies)
 
 dependency_rshift = Dependency() << dependecies
+dependency_rshift_v2 = Dependency() << dependecies()
 
 custom_deps = CustomDeps()
 
@@ -34,7 +35,12 @@ def a_v2(db: Db):
     return db
 
 
-dbs = [a, a_v1, a_v2]
+@dependency_rshift_v2
+def a_v3(db: Db):
+    return db
+
+
+dbs = [a, a_v1, a_v2, a_v3]
 
 
 class TestDecorator(unittest.TestCase):

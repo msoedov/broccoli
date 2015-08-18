@@ -98,6 +98,10 @@ class Dependency(object):
         return self.resolved
 
     def __lshift__(self, on_start):
-        assert callable(on_start)
-        self.on_start = on_start
+        if callable(on_start):
+            self.on_start = on_start
+        elif isinstance(on_start, (list, tuple)):
+            self.resolved = tuple(on_start)
+        else:
+            raise TypeError()
         return self

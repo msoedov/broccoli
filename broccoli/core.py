@@ -4,12 +4,9 @@ import inspect
 import sys
 import types
 
+from .utils import annotated_class
+
 log = logging.getLogger(__package__)
-
-
-def annotated_class(val):
-    return isinstance(val, type) and hasattr(val, '__init__') and hasattr(
-        val.__init__, '__annotations__') and val.__init__.__annotations__
 
 
 def inject(module, *deps):

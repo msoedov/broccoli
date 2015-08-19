@@ -7,6 +7,8 @@ from .flask import *
 # - docstrings
 # - decorators?
 # - rename
+# - inject by package?
+# - pretify errros?
 # - samples
 # - setup.py package
 # - log levels

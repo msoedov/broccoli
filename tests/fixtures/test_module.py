@@ -27,6 +27,5 @@ def validation(mgr: UselessManager, service: Service):
 
 
 class Foo(object):
-
     def __init__(self, db: Db):
         self.db = db

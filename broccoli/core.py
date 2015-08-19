@@ -80,10 +80,13 @@ class Dependency(object):
         self.on_start = on_start
 
     def __call__(self, fn):
+        injected = False
+
         def wrapper(*a, **kw):
-            if not self.injected:
+            nonlocal injected
+            if not injected:
                 self.resolved = self.start()
-                self.injected = True
+                injected = True
                 bind(fn, *self.resolved)
             return fn(*a, **kw)
 

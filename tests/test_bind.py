@@ -4,6 +4,7 @@ from .fixtures.test_module import *
 
 
 class TestBind(TestCase):
+
     def setUp(self):
         self.to_inject = new_app()
 
@@ -13,6 +14,7 @@ class TestBind(TestCase):
         self.assertEqual(deps, [])
 
     def test_bind_should_return_false(self):
+
         def false_bind(x: type):
             pass
 

@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 
 class Service(object):
+
     def __init__(self, arg):
         super(Service, self).__init__()
         self.arg = arg

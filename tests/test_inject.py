@@ -6,6 +6,7 @@ from .fixtures import test_module as m
 
 
 class TestInject(TestCase):
+
     def setUp(self):
         imp.reload(m)
 

@@ -8,6 +8,7 @@ def dependecies():
 
 
 class CustomDeps(Dependency):
+
     def start(self):
         return dependecies()
 
@@ -44,6 +45,7 @@ dbs = [a, a_v1, a_v2, a_v3]
 
 
 class TestDecorator(unittest.TestCase):
+
     def test_injected_db(self):
         for fn in dbs:
             val = fn()

@@ -70,6 +70,7 @@ def bind(fn, *deps):
 
 
 class Dependency(object):
+
     """docstring for Dependency"""
     resolved = None
     injected = False

@@ -16,7 +16,10 @@ def inject(module, *deps):
     :return:
     """
     if isinstance(module, str):
-        module = sys.modules[module]
+        if module in sys.modules:
+            module = sys.modules[module]
+        else:
+            NameError('{} module not found'.format(module))
     fn_list = []
     for attr in vars(module).values():
         if isinstance(attr, types.FunctionType) and attr.__annotations__:
@@ -70,7 +73,6 @@ def bind(fn, *deps):
 
 
 class Dependency(object):
-
     """docstring for Dependency"""
     resolved = None
     injected = False

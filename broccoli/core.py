@@ -3,8 +3,7 @@ import inspect
 
 import sys
 import types
-
-from .utils import annotated_class
+from .utils import annotated_class, sub_modules
 
 log = logging.getLogger(__package__)
 
@@ -20,8 +19,11 @@ def inject(module, *deps):
             module = sys.modules[module]
         else:
             NameError('{} module not found'.format(module))
+    package_modules = sub_modules(module)
+    package_namespace = sum([list(vars(m).values()) for m in package_modules],
+                            [])
     fn_list = []
-    for attr in vars(module).values():
+    for attr in package_namespace:
         if isinstance(attr, types.FunctionType) and attr.__annotations__:
             fn_list.append(attr)
         elif annotated_class(attr):

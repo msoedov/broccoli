@@ -24,7 +24,7 @@ class TestInject(TestCase):
         validation('bar')
         update_query()
 
-    def test_inject_by_name(self):
+    def test_inject_by_module_name(self):
         m.do_stuff = lambda: None
         to_inject = new_app()
         inject('tests.fixtures.test_module', *to_inject)

@@ -32,3 +32,12 @@ class TestInject(TestCase):
         request('foo')
         validation('bar')
         update_query()
+
+    def test_inject_by_package_name(self):
+        m.do_stuff = lambda: None
+        to_inject = new_app()
+        inject('tests.fixtures', *to_inject)
+
+        request('foo')
+        validation('bar')
+        update_query()

@@ -1,17 +1,16 @@
-# todo:
- - make file
- - unitests
- - docstrings
- - decorators?
- - rename
- - inject by package?
- - pretify errros?
- - samples
- - setup.py package
- - log levels
- - readme
- - CI
- - tox
+# todos:
+ - [x] make file
+ - [x] unitests
+ - [ ] docstrings
+ - [x] decorators?
+ - [x] rename
+ - [x] inject by package?
+ - [ ] pretify errros?
+ - [ ] samples
+ - [ ] setup.py package
+ - [ ] log levels
+ - [ ] readme
+ - [ ] CI
+ - [ ] tox
  optional todo:
- - method annotation
- - ...
+ - [ ] ...

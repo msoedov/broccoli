@@ -27,7 +27,6 @@ def inject(module, *deps):
         if isinstance(attr, types.FunctionType) and attr.__annotations__:
             fn_list.append(attr)
         elif annotated_class(attr):
-            # todo: handle method annotations
             fn_list.append(attr.__init__)
     return bind_batch(fn_list, *deps)
 
@@ -75,6 +74,7 @@ def bind(fn, *deps):
 
 
 class Dependency(object):
+
     """docstring for Dependency"""
     resolved = None
     injected = False

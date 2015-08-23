@@ -10,8 +10,8 @@ log = logging.getLogger(__package__)
 
 def inject(module, *deps):
     """
-    :param module:
-    :param deps:
+    :param module: module instance or module name as string
+    :param deps: tuple of dependencies
     :return:
     """
     if isinstance(module, str):
@@ -41,7 +41,7 @@ def bind_batch(fn_list, *deps):
 def bind(fn, *deps):
     """
     :param fn: annotated function
-    :param deps: dependencies
+    :param deps: dependencies tuple
     """
     if not deps:
         log.warning('No deps')
@@ -49,8 +49,8 @@ def bind(fn, *deps):
     type_to_dependency = {type(d): d for d in deps}
     detected_dependecies = {}
     signature = inspect.signature(fn)
-    annotaions = fn.__annotations__
-    for val, _type in annotaions.items():
+    annotations = fn.__annotations__
+    for val, _type in annotations.items():
         dep = type_to_dependency.get(_type)
         if dep is None:
             continue
@@ -62,19 +62,22 @@ def bind(fn, *deps):
             defaults.append(detected_dependecies[param])
         elif len(detected_dependecies) > len(defaults):
             raise TypeError('Not found mandatory value for `{}`'
-                            'in annotaion: {}{}, resolved: {}'.format(
-                                param, fn.__name__, annotaions,
+                            'in annotation: {}{}, resolved: {}'.format(
+                                param, fn.__name__, annotations,
                                 detected_dependecies))
     if not defaults:
         log.warning('%s%s in %s', fn.__name__, fn.__annotations__, deps)
         return False, []
     fn.__defaults__ = tuple(defaults)
-    log.warning("Injected %s to %s%s", defaults, fn.__name__, annotaions)
+    log.warning("Injected %s to %s%s", defaults, fn.__name__, annotations)
     return True, defaults
 
 
 class Dependency(object):
-    """docstring for Dependency"""
+    """
+    Class decorator that allow inject dependencies to the decorated function with type annotation.
+    Accepts an optional kwarg `on_start` to specify the dependency resolver function.
+    """
     resolved = None
     injected = False
 

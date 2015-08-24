@@ -74,7 +74,6 @@ def bind(fn, *deps):
 
 
 class Dependency(object):
-
     """
     Class decorator that allow inject dependencies to the decorated function with type annotation.
     Accepts an optional kwarg `on_start` to specify the dependency resolver function.

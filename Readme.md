@@ -1,10 +1,17 @@
 # Broccoli
-## A simple dependency injection package based on type annotations
 
+A simple dependency injection package based on type annotations
+
+Installation
+-----------
+```shell
+pip install broccoli
+
+```
 
 Features
 --------
-- **Simple** - ~ 100 lines of code and without external dependencies
+- **Simple** - less than 100 lines of code without external dependencies
 - **Error check** - Function signature check on start up - less errors during refactoring
 - **Fast** - Designed to have zero runtime overhead, all dependencies injected either on module load or application start up.
 - **Powerful** - Auto-discovery of dependencies by package and by module

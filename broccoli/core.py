@@ -44,7 +44,7 @@ def bind(fn, *deps):
     :param deps: dependencies tuple
     """
     if not deps:
-        log.warning('No deps')
+        log.debug('No dependencies provided')
         return False, []
     type_to_dependency = {type(d): d for d in deps}
     detected_dependecies = {}
@@ -66,14 +66,15 @@ def bind(fn, *deps):
                                 param, fn.__name__, annotations,
                                 detected_dependecies))
     if not defaults:
-        log.warning('%s%s in %s', fn.__name__, fn.__annotations__, deps)
+        log.debug('%s%s in %s', fn.__name__, fn.__annotations__, deps)
         return False, []
     fn.__defaults__ = tuple(defaults)
-    log.warning("Injected %s to %s%s", defaults, fn.__name__, annotations)
+    log.debug("Injected %s to %s%s", defaults, fn.__name__, annotations)
     return True, defaults
 
 
 class Dependency(object):
+
     """
     Class decorator that allow inject dependencies to the decorated function with type annotation.
     Accepts an optional kwarg `on_start` to specify the dependency resolver function.

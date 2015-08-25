@@ -13,4 +13,5 @@ format:
 	@yapf  -ir ./
 
 link-examples:
-	@ln -s  tests/fixtures/*.py  examples
+	@rm -f examples
+	@ln -s  tests/fixtures examples

@@ -3,6 +3,7 @@ import inspect
 
 import sys
 import types
+from functools import wraps
 from .utils import annotated_class, sub_modules
 
 log = logging.getLogger(__package__)
@@ -89,6 +90,7 @@ class Dependency(object):
     def __call__(self, fn):
         injected = False
 
+        @wraps(fn)
         def wrapper(*a, **kw):
             nonlocal injected
             if not injected:

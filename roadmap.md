@@ -7,7 +7,7 @@
  - [x] inject by package?
  - [ ] pretify errros?
  - [ ] samples
- - [ ] setup.py package
+ - [x] setup.py package
  - [x] log levels
  - [ ] readme
  - [ ] CI

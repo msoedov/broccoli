@@ -1,6 +1,6 @@
 # Broccoli
 
-A simple dependency injection package based on type annotations
+Broccoli is a simple dependency injection package based on type annotations
 
 Installation
 -----------
@@ -17,6 +17,7 @@ Features
 - **Powerful** - Auto-discovery of dependencies by package and by module
 - **Descriptive** - Logging everything.
 - **Convenient** - Really easy to start using it.
+- Hackable and elegant programmatic API
 
 
 Python 2 support?

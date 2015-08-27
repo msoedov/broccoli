@@ -23,6 +23,49 @@ Python 2 support?
 Oups, sorry
 
 
+Examples
+--------
+[/examples](https://github.com/)
+
+Basic Usage
+-----------
+
+Inject dependency to function with type annotations
+
+```python
+from broccoli import bind
+
+class Dependency:
+    pass
+
+def foo(a, bar:Dependency):
+    print(a, bar)
+
+bind(foo, Dependency())
+foo(1)  # prints 1 <__main__.Dependency object at 0x11111b7b8>
+```
+
+Inject dependency to module/package
+```python
+# module foo.py
+
+def foo(a, b:DependencyA):
+    print(a, b)
+
+
+def bar(a, b:DependencyB):
+    print(a, b)
+
+# main.py
+from broccoli import injected
+from package import foo
+
+inject(foo, DependencyA(), DependencyB())
+
+# or
+inject('package.foo', DependencyA(), DependencyB())
+
+```
 
 This looks as dirty hack why should use it?
 ---------------------------------------------
@@ -36,6 +79,3 @@ For **feature requests** and **bug reports** [submit an issue
 ](https://github.com/) to the GitHub issue tracker for
 Broccoli.
 
-
-Basic Usage
------------

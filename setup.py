@@ -2,11 +2,6 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the relevant file
-with open(path.join(here, 'Readme.md'), encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name='broccoli',
@@ -15,7 +10,6 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version='1.0.0',
     description='A simple dependency injection package based on type annotations',
-    long_description=long_description,
     # The project's main homepage.
     url='https://github.com/msoedov/broccoli',
     # Author details
@@ -29,9 +23,10 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 2 - Pre-Alpha',
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
         'Topic :: Software Development :: Libraries',
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',

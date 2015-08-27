@@ -6,6 +6,11 @@ test:
 clean:
 	@find . -name '*.pyc' -delete
 	@find . -name '__pycache__' -type d -exec rm -fr {} \;
+	@rm -rf dist
+	@rm -f .coverage
+	@rm -rf htmlcov
+	@rm -rf build
+	@rm -rf broccoli.egg-info
 
 format:
 	@echo "Formating:"

@@ -79,6 +79,6 @@ Getting Help
 ------------
 
 For **feature requests** and **bug reports** [submit an issue
-](https://github.com/) to the GitHub issue tracker for
+](https://github.com/msoedov/brocolli/issues) to the GitHub issue tracker for
 Broccoli.
 

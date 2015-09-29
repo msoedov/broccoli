@@ -60,7 +60,7 @@ def bar(a, b:DependencyB):
     print(a, b)
 
 # main.py
-from broccoli import injected
+from broccoli import inject
 from package import foo
 
 inject(foo, DependencyA(), DependencyB())

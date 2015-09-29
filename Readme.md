@@ -26,10 +26,6 @@ Python 2 support?
 Oups, sorry
 
 
-Examples
---------
-[/examples](https://github.com/)
-
 Basic Usage
 -----------
 
@@ -69,6 +65,47 @@ inject(foo, DependencyA(), DependencyB())
 inject('package.foo', DependencyA(), DependencyB())
 
 ```
+
+Example with decorator wich inject deps on demand
+```python
+from brocolli.fixtures.types import *
+from broccoli import Dependency
+
+
+def dependecies():
+    return Db(), Service(), Cache()
+
+
+default_dependencies = Dependency(dependecies)
+
+
+@default_dependencies
+def a(db: Db):
+    return db.query('User').all()
+```
+
+Inject deps on application entry point
+```python
+...
+
+default_dependencies = Dependency()
+
+
+@default_dependencies
+def a(db: Db):
+    return db.query('User').all()
+
+if __name__ == '__main__':
+    default_dependencies << dependecies
+    # or even
+    default_dependencies << dependecies()
+
+```
+
+Test examples
+--------
+[examples](https://github.com/msoedov/brocolli/tree/master/tests)
+
 
 This looks as dirty hack why should use it?
 ---------------------------------------------

@@ -1,10 +1,9 @@
 # Broccoli
-
-Broccoli is a simple dependency injection package based on type annotations
-
 [![PyPI](https://img.shields.io/pypi/v/broccoli.svg)]()
 [![Supported versions](https://img.shields.io/pypi/pyversions/broccoli.svg)]()
 [![Build Status](https://travis-ci.org/msoedov/brocolli.svg)](https://travis-ci.org/msoedov/brocolli)
+
+Broccoli is a simple dependency injection package based on type annotations
 
 Installation
 -----------

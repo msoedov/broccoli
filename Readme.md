@@ -1,7 +1,9 @@
-# Broccoli
+![Broccoli](broccoli.png?raw=true)
+------------------------------
 [![PyPI](https://img.shields.io/pypi/v/broccoli.svg)]()
 [![Supported versions](https://img.shields.io/pypi/pyversions/broccoli.svg)]()
 [![Build Status](https://travis-ci.org/msoedov/broccoli.svg?branch=master)](https://travis-ci.org/msoedov/broccoli)
+[![Code Climate](https://codeclimate.com/github/msoedov/broccoli/badges/gpa.svg)](https://codeclimate.com/github/msoedov/broccoli)
 
 Broccoli is a simple dependency injection package based on type annotations
 
@@ -118,4 +120,3 @@ Getting Help
 For **feature requests** and **bug reports** [submit an issue
 ](https://github.com/msoedov/brocolli/issues) to the GitHub issue tracker for
 Broccoli.
-

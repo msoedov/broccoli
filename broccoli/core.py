@@ -8,6 +8,8 @@ from .utils import annotated_class, sub_modules
 
 log = logging.getLogger(__package__)
 
+__all__ = ('inject', 'bind', 'Dependency')
+
 
 def inject(module, *deps):
     """
@@ -112,5 +114,5 @@ class Dependency(object):
         elif isinstance(on_start, (list, tuple)):
             self.resolved = tuple(on_start)
         else:
-            raise TypeError()
+            raise TypeError('Deps should be a list or a tuple')
         return self

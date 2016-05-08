@@ -50,3 +50,7 @@ class TestDecorator(unittest.TestCase):
         for fn in dbs:
             val = fn()
             self.assertEqual(val, Db())
+
+    def test_error(self):
+        with self.assertRaises(TypeError):
+            dependency << object()

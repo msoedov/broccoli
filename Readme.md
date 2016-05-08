@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
 Test examples
 --------
-[examples](https://github.com/msoedov/brocolli/tree/master/tests)
+[examples](https://github.com/msoedov/broccoli/tree/master/tests/fixtures)
 
 
 This looks as dirty hack why should use it?

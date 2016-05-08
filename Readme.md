@@ -4,6 +4,11 @@
 [![Supported versions](https://img.shields.io/pypi/pyversions/broccoli.svg)]()
 [![Build Status](https://travis-ci.org/msoedov/broccoli.svg?branch=master)](https://travis-ci.org/msoedov/broccoli)
 [![Code Climate](https://codeclimate.com/github/msoedov/broccoli/badges/gpa.svg)](https://codeclimate.com/github/msoedov/broccoli)
+![License][license-img]
+
+
+[license-img]: http://img.shields.io/badge/license-MIT-brightgreen.svg
+[license]: http://opensource.org/licenses/MIT
 
 Broccoli is a simple dependency injection package based on type annotations
 
